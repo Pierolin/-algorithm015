@@ -1,4 +1,4 @@
-package algorithm015;
+package algorithm015.test;
 
 import java.util.*;
 
