@@ -4,16 +4,20 @@ public class MaxArea {
     public int maxArea(int[] height) {
         /**
          * 方法一：双指针
-         *
+         * TC: O(n)
+         * SC: O(1)
          */
+        // 简练的写法
         int max = 0;
         for (int i = 0, j = height.length - 1; i < j; ) {
             int minHeight = height[i] < height[j] ? height[i++] : height[j--];
-            max = Math.max(max, (j - i -1) * minHeight);
+            max = Math.max(max, (j - i - 1) * minHeight);
         }
         return max;
-
-       /* int i = 0;
+        /*
+        // 可读性更高的写法，实质与上面写法一致
+        int max = 0;
+        int i = 0;
         int j = height.length - 1;
         while (i < j) {
             int area = (j - i) * Math.min(height[i], height[j]);
@@ -26,6 +30,7 @@ public class MaxArea {
         }
         return max;
         */
+
 
         /**
          * 方法二：双循环暴力解法
