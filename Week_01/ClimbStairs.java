@@ -1,4 +1,4 @@
-package algorithm015.Week_03;
+package algorithm015.Week_01;
 
 public class ClimbStairs {
     public int climbStairs(int n) {

@@ -20,22 +20,22 @@ public class MoveZeroes {
                 }
             }
         }*/
-        int i =0;
-        int j= nums.length-1;
-        for(int num:nums){
-            if(num!=0){
+        int i = 0;
+        int j = nums.length - 1;
+        for (int num : nums) {
+            if (num != 0) {
                 nums[i++] = num;
             }
 
         }
-        while(i<=j){
+        while (i <= j) {
             nums[i++] = 0;
         }
     }
 
     public static void main(String[] args) {
         MoveZeroes moveZeroes = new MoveZeroes();
-        int[] nums = new int[]{0,8,0,1};
+        int[] nums = new int[]{0, 8, 0, 1};
         moveZeroes.moveZeroes(nums);
         System.out.println(Arrays.toString(nums));
 
