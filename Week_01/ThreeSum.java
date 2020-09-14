@@ -10,10 +10,12 @@ public class ThreeSum {
          * TC: O(n^2)
          * SC: O(n)
          */
-        Arrays.sort(nums);
-        int length = nums.length;
         List<List<Integer>> list = new ArrayList<>();
+        if (nums == null && nums.length < 2) return list;
+        int length = nums.length;
+        Arrays.sort(nums);
         for (int i = 0; i < length - 2; i++) {
+            if (nums[i] < 0) break;
             if (i > 0 && nums[i] == nums[i - 1]) continue; // 判重
             int left = i + 1;
             int right = length - 1;
