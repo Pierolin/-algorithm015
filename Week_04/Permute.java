@@ -1,9 +1,6 @@
 package algorithm015.Week_04;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 public class Permute {
     public List<List<Integer>> permute(int[] nums) {
@@ -13,7 +10,6 @@ public class Permute {
         Deque<Integer> element = new ArrayDeque();
         boolean[] selecteds = new boolean[nums.length];
         backTrack(result, nums, element, selecteds);
-
         return result;
     }
 
@@ -33,7 +29,7 @@ public class Permute {
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
+        int[] nums = {1, 1, 2};
         Permute solution = new Permute();
         List<List<Integer>> lists = solution.permute(nums);
         System.out.println(lists);
