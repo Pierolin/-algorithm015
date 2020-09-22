@@ -1,5 +1,7 @@
 package algorithm015.Week_04;
 
+import algorithm015.TreeNode;
+
 public class InvertTree {
     public TreeNode invertTree(TreeNode root) {
         if (root == null) return null;
@@ -15,12 +17,3 @@ public class InvertTree {
     }
 }
 
-class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
-
-    public TreeNode(int x) {
-        val = x;
-    }
-}
