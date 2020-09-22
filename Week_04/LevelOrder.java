@@ -36,6 +36,10 @@ public class LevelOrder {
         }
     }
 
+    /**
+     * bfs + 队列
+     *
+     */
     public List<List<Integer>> levelOrder_2(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
         Queue<TreeNode> queue = new ArrayDeque<>();
