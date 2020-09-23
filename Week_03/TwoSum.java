@@ -9,32 +9,36 @@ public class TwoSum {
          * 方法一：HashMap
          * TC: O(n)
          * SC: O(n)
+         * 解题关键：
+         * 1. 使用 HashMap 存访问过的数及下标;
          */
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-        for (int i = 0; i < nums.length; ++i) {
-            int difference = target - nums[i];
-            if (map.containsKey(difference)) {
-                return new int[]{map.get(difference), i};
-            } else {
-                map.put(nums[i], i);
+
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i=0; i < nums.length; i++) {
+            int diff = target - nums[i];
+            if (map.containsKey(diff)) {
+                return new int[]{map.get(diff),i};
+            }
+            else {
+                map.put(nums[i],i);
             }
         }
-        return null;
+        return new int[2];
 
         /**
-         * 方法二：双循环
+         * 方法二：暴力双循环
          * TC: O(n^2)
          * SC: 0(1)
          */
         /*
-        for(int i=0;i<nums.length-1;i++){
-            for(int j=i+1;j<nums.length;j++){
-                if(nums[i]+nums[j]==target){
+        for (int i = 0; i < nums.length - 1; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
                     return new int[]{i,j};
                 }
             }
         }
-        return null;
+         return new int[2];
         */
     }
 }

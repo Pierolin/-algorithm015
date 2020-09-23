@@ -1,52 +1,52 @@
 package algorithm015.Week_05;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LadderLength {
-    int count = 1;
 
     public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        Set<String> wordSet = new HashSet<>(wordList);
+        if (wordSet.size() == 0 || !wordSet.contains(endWord)) {
+            return 0;
+        }
+        wordSet.remove(beginWord);
 
-        Map<String, Integer> used = new HashMap<>();
-        findNext(beginWord, endWord, wordList, used);
-        return count;
-    }
+        Queue<String> wordQueue = new LinkedList<>();
+        Set<String> visitedSet = new HashSet<>();
+        wordQueue.add(beginWord);
+        visitedSet.add(beginWord);
+        int steps = 1;
 
-    private void findNext(String beginWord, String endWord, List<String> wordList, Map used) {
-        // TPDR
-
-        for (int i = 0; i < wordList.size(); i++) {
-            String key = wordList.get(i);
-            if (used.containsKey(key)) continue;
-            String word = wordList.get(i);
-            if (isNext(beginWord, word)) {
-                count++;
-                used.put(key, 1);
-                if (word.equals(endWord)) {
-                    return;
-                } else {
-                    findNext(word, endWord, wordList, used);
+        while (!wordQueue.isEmpty()) {
+            int size = wordQueue.size();
+            for (int i = 0; i < size; i++) {
+                String word = wordQueue.poll();
+                char[] chars = word.toCharArray();
+                for (int j = 0; j < chars.length; j++) {
+                    char originChar = chars[j];
+                    for (char c = 'a'; c <= 'z'; c++) {
+                        if (chars[j] == c) continue;
+                        chars[j] = c;
+                        String tempWord = String.valueOf(chars);
+                        if (tempWord.equals(endWord)) {
+                            return steps + 1;
+                        }
+                        if (visitedSet.contains(tempWord)) {
+                            continue;
+                        }
+                        if (wordSet.contains(tempWord)) {
+                            wordQueue.add(tempWord);
+                            visitedSet.add(tempWord);
+                        }
+                    }
+                    chars[j] = originChar;
                 }
-                break;
             }
+            steps++;
         }
+        return 0;
     }
 
-    private boolean isNext(String wordA, String wordB) {
-        char[] charsA = wordA.toCharArray();
-        char[] charsB = wordB.toCharArray();
-        int diffCount = 0;
-        for (int i = 0; i < charsA.length; i++) {
-            if (charsA[i] != charsB[i]) {
-                if (diffCount > 0) return false;
-                diffCount++;
-            }
-        }
-        return true;
-    }
 
     public static void main(String[] args) {
         LadderLength ladderLength = new LadderLength();
@@ -60,9 +60,6 @@ public class LadderLength {
         wordList.add("dog");
         wordList.add("hot");
         wordList.add("dot");
-
-
-
 
 
         int length = ladderLength.ladderLength(beginWord, endWord, wordList);
