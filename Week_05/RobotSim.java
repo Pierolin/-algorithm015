@@ -3,26 +3,26 @@ package algorithm015.Week_05;
 public class RobotSim {
     public int robotSim(int[] commands, int[][] obstacles) {
         int[] position = new int[]{0, 0};
-        String directionTo = "North";
+        String direction = "North";
         int max = 0;
         for (int i = 0; i < commands.length; i++) {
             int command = commands[i];
             if (command == -1 || command == -2) {
                 // 改变方向
-                directionTo = turnDirection(directionTo, command);
+                direction = turnDirection(direction, command);
             } else {
                 // 前进并修正最大值
-                position = goAhead(directionTo, command, position, obstacles);
+                position = goAhead(direction, command, position, obstacles);
                 max = Math.max(max, position[0] * position[0] + position[1] * position[1]);
             }
         }
         return max;
     }
 
-    private int[] goAhead(String directionTo, int command, int[] position, int[][] obstacles) {
+    private int[] goAhead(String direction, int command, int[] position, int[][] obstacles) {
         int x = position[0];
         int y = position[1];
-        switch (directionTo) {
+        switch (direction) {
             case "North":
                 for (int[] obstacle : obstacles) {
                     if (obstacle[0] == x && y < obstacle[1] && y + command >= obstacle[1]) {
@@ -63,9 +63,9 @@ public class RobotSim {
         return new int[]{x, y};
     }
 
-    private String turnDirection(String directionTo, int command) {
+    private String turnDirection(String direction, int command) {
         if (command == -1) {
-            switch (directionTo) {
+            switch (direction) {
                 case "North":
                     return "East";
                 case "East":
@@ -78,7 +78,7 @@ public class RobotSim {
         }
 
         if (command == -2) {
-            switch (directionTo) {
+            switch (direction) {
                 case "North":
                     return "West";
                 case "West":
@@ -89,6 +89,6 @@ public class RobotSim {
                     return "North";
             }
         }
-        return directionTo;
+        return direction;
     }
 }
