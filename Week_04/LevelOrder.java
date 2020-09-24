@@ -38,10 +38,17 @@ public class LevelOrder {
 
     /**
      * bfs + 队列
-     *
+     * TC: O(n)
+     * SC: O(n)
+     * 解题关键：
+     * 1. 使用队列先进先出；
+     * 2. 队列的长度即为本层数组大小。
      */
     public List<List<Integer>> levelOrder_2(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
+        if (root == null) {
+            return list;
+        }
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
 
@@ -53,7 +60,6 @@ public class LevelOrder {
                 nums.add(node.val);
                 if (node.left != null) queue.add(node.left);
                 if (node.right != null) queue.add(node.right);
-
             }
             list.add(nums);
         }
