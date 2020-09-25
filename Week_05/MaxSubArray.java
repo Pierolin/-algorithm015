@@ -48,11 +48,52 @@ public class MaxSubArray {
         return max;
     }
 
+    /**
+     * 分治 + 递归
+     */
+    public int maxSubArray_3(int[] nums) {
+       return calculateByRange(nums, 0, nums.length - 1);
+    }
+
+    private int calculateByRange(int[] nums, int start, int end) {
+        // terminator
+        if (start == end) {
+            return nums[start];
+        }
+
+        int center = (start + end) / 2;
+
+        // calculate left max
+        int maxLeft = calculateByRange(nums, start, center);
+
+        // calculate right max
+        int maxRight = calculateByRange(nums, center + 1, end);
+
+        // calculate cross center max
+        int maxCenterLeft = nums[center];
+        int sumCenterLeft = 0;
+        for (int i = center; i >= start; i--) {
+            sumCenterLeft += nums[i];
+            maxCenterLeft = Math.max(maxCenterLeft, sumCenterLeft);
+        }
+
+        int maxCenterRight = nums[center + 1];
+        int sumCenterRight = 0;
+        for (int i = center + 1; i <= end; i++) {
+            sumCenterRight += nums[i];
+            maxCenterRight = Math.max(maxCenterRight, sumCenterRight);
+        }
+
+        int maxCrossCenter = maxCenterLeft + maxCenterRight;
+
+        return Math.max(maxCrossCenter, Math.max(maxLeft, maxRight));
+    }
+
 
     public static void main(String[] args) {
         MaxSubArray maxSubArray = new MaxSubArray();
-        int[] nums = {-2, 1, -3, 4, -1, 2, 1, -5, 4};
-        int max = maxSubArray.maxSubArray_2(nums);
+        int[] nums = {2,0,3,-2};
+        int max = maxSubArray.maxSubArray_3(nums);
         System.out.println(max);
     }
 }
