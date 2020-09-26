@@ -2,10 +2,22 @@ package algorithm015.Week_05;
 
 public class SearchMatrix {
     /**
-     * 
+     * 半暴力求解
      * @param matrix
      * @param target
      * @return
+     */
+    public boolean searchMatrix_3(int[][] matrix, int target) {
+        return false;
+    }
+    /**
+     * 一次二分查找
+     * TC: O(log(mn))
+     * SC: O(1)
+     * 解题关键：
+     * 1. 二维数组虚拟为一维数组；
+     * 2. 二分后再转为二维数组获取中间值
+     *
      */
     public boolean searchMatrix_2(int[][] matrix, int target) {
         if (matrix == null || matrix.length == 0 || (matrix.length == 1 && matrix[0].length == 0)) {
