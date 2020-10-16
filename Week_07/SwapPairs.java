@@ -4,7 +4,9 @@ public class SwapPairs {
     /**
      * 方法一：递归
      * TC: O(n)
-     * SC: O(n）
+     * Sc: O(n)
+     * 解题关键：
+     *  1. 交换前 2 个节点，第 3 个节点开始新一轮的递归
      */
     public ListNode swapPairs_1(ListNode head) {
         ListNode currentNode = head;
