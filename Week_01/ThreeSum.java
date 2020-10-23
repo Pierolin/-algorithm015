@@ -3,13 +3,12 @@ package algorithm015.Week_01;
 import java.util.*;
 
 public class ThreeSum {
-
-    public List<List<Integer>> threeSum(int[] nums) {
-        /**
-         * 方法一：双指针 + 人工判重
-         * TC: O(n^2)
-         * SC: O(n)
-         */
+    /**
+     * 方法一：双指针 + 人工判重
+     * TC: O(n^2)
+     * SC: O(n)
+     */
+    public List<List<Integer>> threeSum_1(int[] nums) {
         List<List<Integer>> list = new ArrayList<>();
         if (nums == null && nums.length < 2) return list;
         int length = nums.length;
@@ -44,13 +43,14 @@ public class ThreeSum {
             }
         }
         return list;
+    }
 
-        /**
-         * 方法二：双指针 + Hash 自动判重
-         * TC: O(n^2)
-         * SC: O(n)
-         */
-        /*
+    /**
+     * 方法二：双指针 + Hash 自动判重
+     * TC: O(n^2)
+     * SC: O(n)
+     */
+    public List<List<Integer>> threeSum_2(int[] nums) {
         Arrays.sort(nums);
         int length = nums.length;
         Set<List<Integer>> list = new LinkedHashSet<>();
@@ -71,13 +71,14 @@ public class ThreeSum {
             }
         }
         return new ArrayList<>(list);
-        */
-        /**
-         * 方法三：暴力解法
-         * TC: O(n^3)
-         * SC: O(n)
-         */
-        /*
+    }
+
+    /**
+     * 方法三：暴力解法
+     * TC: O(n^3)
+     * SC: O(n)
+     */
+    public List<List<Integer>> threeSum_3(int[] nums) {
         Arrays.sort(nums);
         int length = nums.length;
         Set<List<Integer>> list = new LinkedHashSet<>();
@@ -91,6 +92,5 @@ public class ThreeSum {
             }
         }
         return new ArrayList<>(list);
-        */
     }
 }
