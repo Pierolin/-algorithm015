@@ -9,11 +9,24 @@ import java.util.Map;
  * https://leetcode-cn.com/problems/triangle/
  */
 public class MinimumTotal {
+
     /**
      * 方法一：动态规划
      */
     public int minimumTotal_1(List<List<Integer>> triangle) {
-        return 0;
+        int[] dp = new int[triangle.size()];
+        List<Integer> lastRow = triangle.get(triangle.size() - 1);
+        for (int i = 0; i < lastRow.size(); i++) {
+            dp[i] = lastRow.get(i);
+        }
+
+        for (int row = triangle.size() - 2; row > -1; row--) {
+            List<Integer> list = triangle.get(row);
+            for (int col = 0; col < list.size(); col++) {
+                dp[col] = Math.min(dp[col], dp[col + 1]) + list.get(col);
+            }
+        }
+        return dp[0];
     }
 
     /**
