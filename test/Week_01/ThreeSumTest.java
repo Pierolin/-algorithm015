@@ -13,7 +13,7 @@ class ThreeSumTest {
     void threeSum() {
         ThreeSum threeSum = new ThreeSum();
         int[] nums = new int[]{-1, 0, 1, 2, -1, -4};
-        List result = threeSum.threeSum(nums);
+        List result = threeSum.threeSum_1(nums);
         assertTrue(result.size()==2);
 
     }
