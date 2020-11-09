@@ -18,22 +18,15 @@ public class LevelOrder {
         if (root == null) {
             return list;
         }
-        travel(root, 0, list);
+        dfs(root, 0, list);
         return list;
     }
 
-    private void travel(TreeNode root, int level, List<List<Integer>> list) {
-        if (list.size() == level) {
-            list.add(new ArrayList<>());
-        }
+    private void dfs(TreeNode root, int level, List<List<Integer>> list) {
+        if (list.size() == level) list.add(new ArrayList<>());
         list.get(level).add(root.val);
-        System.out.println(root.val);
-        if (root.left != null) {
-            travel(root.left, level + 1, list);
-        }
-        if (root.right != null) {
-            travel(root.right, level + 1, list);
-        }
+        if (root.left != null) dfs(root.left, level + 1, list);
+        if (root.right != null) dfs(root.right, level + 1, list);
     }
 
     /**
@@ -46,9 +39,8 @@ public class LevelOrder {
      */
     public List<List<Integer>> levelOrder_2(TreeNode root) {
         List<List<Integer>> list = new ArrayList<>();
-        if (root == null) {
-            return list;
-        }
+        if (root == null) return list;
+
         Queue<TreeNode> queue = new ArrayDeque<>();
         queue.add(root);
 
