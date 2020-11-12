@@ -12,4 +12,5 @@
 * [第 12 课 | 动态规划](https://mubu.com/doc/5ruZEck7qZd)
 * [第 13 课 | 字典集和并查集](https://mubu.com/doc/5fCUpfqiyZd)
 * [第 14 课 | 高级搜索](https://mubu.com/doc/3bhALNLADdd)
+* [第 16 课 | 位运算](https://share.mubu.com/doc/7HClQnmqbDd)
 * [第 18 课 | 排序算法](https://mubu.com/doc/647I1Z8Yetd)
