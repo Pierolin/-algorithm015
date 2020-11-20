@@ -8,10 +8,10 @@ public class Sorts {
      * 简介：把最小的排最前面
      */
     public int[] selectionSort(int[] nums) {
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < nums.length; j++) {
-                if (nums[minIndex] > nums[j]) {
+                if (nums[j] < nums[minIndex]) {
                     minIndex = j;
                 }
             }
@@ -29,12 +29,12 @@ public class Sorts {
     public int[] insertionSort(int[] nums) {
         for (int i = 1; i < nums.length; i++) {
             int current = nums[i];
-            int j = i;
-            while (j > 0 && nums[j - 1] > current) {
-                nums[j] = nums[j - 1];
+            int j = i - 1;
+            while (j >= 0 && nums[j] > current) {
+                nums[j + 1] = nums[j];
                 j--;
             }
-            nums[j] = current;
+            nums[j + 1] = current;
         }
         return nums;
     }
@@ -117,10 +117,10 @@ public class Sorts {
         Sorts sorts = new Sorts();
         int[] nums = {5, 2, 3, 9, 4, 3, 6, 8, 6, 7, 1};
         System.out.println(Arrays.toString(nums));
-        //System.out.println(Arrays.toString(sorts.selectionSort(nums)));
+        System.out.println(Arrays.toString(sorts.selectionSort(nums)));
         //System.out.println(Arrays.toString(sorts.insertionSort(nums)));
         //System.out.println(Arrays.toString(sorts.bubbleSort(nums)));
         //System.out.println(Arrays.toString(sorts.heapSort(nums)));
-        System.out.println(Arrays.toString(sorts.countingSort(nums, 9)));
+        //System.out.println(Arrays.toString(sorts.countingSort(nums, 9)));
     }
 }
